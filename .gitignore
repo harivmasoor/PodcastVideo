@@ -1,0 +1,6 @@
+.env
+Hari.wav
+.venv/
+__pycache__/
+README.md
+ssml.txt

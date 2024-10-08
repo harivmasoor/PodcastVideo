@@ -1,0 +1,103 @@
+Call media.upload to upload a file using the File API. The following code uploads an audio file and then uses the file in a call to models.generateContent.
+
+
+myfile = genai.upload_file(media / "sample.mp3")
+print(f"{myfile=}")
+
+model = genai.GenerativeModel("gemini-1.5-flash")
+result = model.generate_content([myfile, "Describe this audio clip"])
+print(f"{result.text=}")
+
+Get metadata for a file
+You can verify the API successfully stored the uploaded file and get its metadata by calling files.get.
+
+
+myfile = genai.upload_file(media / "poem.txt")
+file_name = myfile.name
+print(file_name)  # "files/*"
+
+myfile = genai.get_file(file_name)
+print(myfile)
+
+List uploaded files
+You can upload multiple audio files (and other kinds of files). The following code generates a list of all the files uploaded:
+
+
+print("My files:")
+for f in genai.list_files():
+    print("  ", f.name)
+
+Delete uploaded files
+Files are automatically deleted after 48 hours. Optionally, you can manually delete an uploaded file. For example:
+
+
+myfile = genai.upload_file(media / "poem.txt")
+
+myfile.delete()
+
+try:
+    # Error.
+    model = genai.GenerativeModel("gemini-1.5-flash")
+    result = model.generate_content([myfile, "Describe this file."])
+except google.api_core.exceptions.PermissionDenied:
+    pass
+
+Provide the audio file as inline data in the request
+Instead of uploading an audio file, you can pass audio data in the same call that contains the prompt.
+
+Then, pass that downloaded small audio file along with the prompt to Gemini:
+
+
+# Initialize a Gemini model appropriate for your use case.
+model = genai.GenerativeModel('models/gemini-1.5-flash')
+
+# Create the prompt.
+prompt = "Please summarize the audio."
+
+# Load the samplesmall.mp3 file into a Python Blob object containing the audio
+# file's bytes and then pass the prompt and the audio to Gemini.
+response = model.generate_content([
+    prompt,
+    {
+        "mime_type": "audio/mp3",
+        "data": pathlib.Path('samplesmall.mp3').read_bytes()
+    }
+])
+
+# Output Gemini's response to the prompt and the inline audio.
+print(response.text)
+Note the following about providing audio as inline data:
+
+The maximum request size is 20 MB, which includes text prompts, system instructions, and files provided inline. If your file's size will make the total request size exceed 20 MB, then use the File API to upload files for use in requests.
+If you're using an audio sample multiple times, it is more efficient to use the File API.
+More ways to work with audio
+This section provides a few additional ways to get more from audio.
+
+Get a transcript of the audio file
+To get a transcript, just ask for it in the prompt. For example:
+
+
+# Initialize a Gemini model appropriate for your use case.
+model = genai.GenerativeModel(model_name="gemini-1.5-flash")
+
+# Create the prompt.
+prompt = "Generate a transcript of the speech."
+
+# Pass the prompt and the audio file to Gemini.
+response = model.generate_content([prompt, audio_file])
+
+# Print the transcript.
+print(response.text)
+Refer to timestamps in the audio file
+A prompt can specify timestamps of the form MM:SS to refer to particular sections in an audio file. For example, the following prompt requests a transcript that:
+
+Starts at 2 minutes 30 seconds from the beginning of the file.
+Ends at 3 minutes 29 seconds from the beginning of the file.
+
+# Create a prompt containing timestamps.
+prompt = "Provide a transcript of the speech from 02:30 to 03:29."
+Count tokens
+Call the countTokens method to get a count of the number of tokens in the audio file. For example:
+
+
+model.count_tokens([audio_file])
