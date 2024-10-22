@@ -34,20 +34,27 @@ This project transcribes audio files (specifically podcasts) into SSML-formatted
 
 ## Usage
 
-1. Place your audio file (e.g., "hari.wav") in the project directory.
+1. Download the Audio file from Notebook LM.
+2. Change the name of the downloaded file to "my_resume_podcast.wav".
+3. Import the audio file to Cursor and drop it inside the PodcastVideo directory.
+4. Open the `transcribe.py` file.
+5. In the `transcribe.py` file, find the placeholder "####ADD_YOUR_NAME_HERE####" and replace it with your name.
+6. Save the `transcribe.py` file.
 
-2. Run the transcription script:
+7. Run the transcription script:
    ```
    python transcribe.py
    ```
 
-3. The SSML-formatted transcript will be printed to the console.
+8. The SSML-formatted transcript will be saved to "My_Podcast_Transcript.txt" in the same directory.
 
 ## Files
 
 - `transcribe.py`: Main script for audio transcription
 - `config.py`: Configuration file for API key and model setup
 - `requirements.txt`: List of Python package dependencies
+- `my_resume_podcast.wav`: Your podcast audio file
+- `My_Podcast_Transcript.txt`: Output file containing the SSML-formatted transcript
 
 ## Notes
 
