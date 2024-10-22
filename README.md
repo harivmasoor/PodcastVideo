@@ -4,9 +4,9 @@ This project transcribes audio files (specifically podcasts) into SSML-formatted
 
 ## Prerequisites
 
-- Python 3.7+
+- Python 3.9
 - A Google Cloud account with access to the Gemini API
-- An audio file to transcribe (e.g., "hari.wav")
+- An audio file to transcribe (e.g., "my_resume_podcast.wav")
 
 ## Installation
 
