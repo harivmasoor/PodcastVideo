@@ -6,7 +6,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 def transcribe_audio(audio_file_path):
     # Create a more detailed prompt
     prompt = """
-    Generate a transcript of the podcast conversation about Hari Masoor.
+    Generate a transcript of the podcast conversation about [Add Your Name Here].
     Identify the speakers as 'Man' and 'Woman', and format the transcript in SSML as follows:
     
     <speak>
@@ -33,5 +33,5 @@ def transcribe_audio(audio_file_path):
     print(response.text)
 
 if __name__ == "__main__":
-    audio_file_path = "hari.wav"  # Make sure this file exists in your project directory
+    audio_file_path = "my_resume_podcast.wav"  # Make sure this file exists in your project directory
     transcribe_audio(audio_file_path)
