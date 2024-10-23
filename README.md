@@ -59,14 +59,14 @@
    python3.9 --version
    ```
 10. **Virtual Environment Setup**
-   - Create:
-   ```
-   python3.9 -m venv myproject_env
-   ```
-   - Activate: 
-   ```
-   source myproject_env/bin/activate
-   ```
+      - Create:
+      ```
+      python3.9 -m venv myproject_env
+      ```
+      - Activate: 
+      ```
+      source myproject_env/bin/activate
+      ```
 11. **Install Dependencies**
     ```
     pip install -r requirements.txt
