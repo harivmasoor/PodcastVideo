@@ -1,11 +1,15 @@
-import google.generativeai as genai
-from config import GEMINI_API_KEY, model
 import os
+from config import GEMINI_API_KEY, model
+import google.generativeai as genai
+
+print("Script started")
+
 genai.configure(api_key=GEMINI_API_KEY)
+
 def transcribe_audio(audio_file_path):
-    # Create a more detailed prompt
+      # Create a more detailed prompt
     prompt = """
-    Generate a transcript of the podcast conversation about ####ADD_YOUR_NAME_HERE####.
+    Generate a transcript of the podcast conversation about Sara Zare.
     Identify the speakers as 'Man' and 'Woman', and format the transcript in SSML as follows:
     
     <speak>
@@ -20,17 +24,39 @@ def transcribe_audio(audio_file_path):
     Please ensure accurate speaker attribution and maintain the flow of the conversation.
     Wrap each speaker's entire dialogue in the appropriate voice tags.
     """
-    # Upload the audio file
-    audio_file = genai.upload_file(audio_file_path)
-    # Generate the transcript
-    response = model.generate_content([prompt, audio_file])
-    # Save the transcript to a file
-    output_file_path = os.path.join(os.path.dirname(__file__), "My_Podcast_Transcript.txt")
-    with open(output_file_path, "w") as f:
-        f.write("SSML Transcript:\n")
-        f.write(response.text)
-    print(f"Transcript saved to: {output_file_path}")
-if __name__ == "__main__":
-    audio_file_path = "my_resume_podcast.wav"  # Make sure this file exists in your project directory
-    transcribe_audio(audio_file_path)
+    print(f"Attempting to transcribe file: {audio_file_path}")
+    
+    if not os.path.exists(audio_file_path):
+        print(f"Error: The file '{audio_file_path}' does not exist.")
+        return
 
+    try:
+        print("Uploading file...")
+        audio_file = genai.upload_file(audio_file_path)
+        print("File uploaded successfully")
+        
+        print("Starting transcription...")
+        result = model.generate_content([prompt, audio_file])
+        print("Transcription completed")
+        
+        print("Transcription result:")
+        print(result.text)
+        
+        # Save the transcription to a file
+        output_file_path = "transcription_output.txt"
+        with open(output_file_path, "w") as f:
+            f.write(result.text)
+        print(f"Transcription saved to {output_file_path}")
+    except Exception as e:
+        print(f"An error occurred while processing the file: {e}")
+
+# Update this line to use the correct path to your audio file
+audio_file_path = "my_resume_podcast.wav"
+
+print(f"Current working directory: {os.getcwd()}")
+print(f"Full path of audio file: {os.path.abspath(audio_file_path)}")
+
+# Call the function with the correct file path
+transcribe_audio(audio_file_path)
+
+print("Script completed")
