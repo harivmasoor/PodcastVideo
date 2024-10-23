@@ -46,14 +46,14 @@
    - Add to .env: `GEMINI_API_KEY=your_api_key_here`
 9. **Python Environment Setup**
    - Check Python version: 
-```
-python3 --version
-```
+   ```
+   python3 --version
+   ```
    - If not 3.9.x, add Python 3.9 to PATH:
-     ```
-     echo 'export PATH="/usr/local/opt/python@3.9/bin:$PATH"' >> ~/.zshrc
-     source ~/.zshrc
-     ```
+   ```
+   echo 'export PATH="/usr/local/opt/python@3.9/bin:$PATH"' >> ~/.zshrc
+   source ~/.zshrc
+   ```
    - Verify: 
 ```
 python3.9 --version
