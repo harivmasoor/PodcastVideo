@@ -63,7 +63,7 @@ python3.9 --version
 ```
 python3.9 -m venv myproject_env
 ```
-    - Activate: 
+   - Activate: 
 ```
 source myproject_env/bin/activate
 ```
