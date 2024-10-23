@@ -61,7 +61,7 @@
 10. **Virtual Environment Setup**
       - Create:
       ```
-      python3.9 -m venv myproject_env
+      python3 -m venv myproject_env
       ```
       - Activate: 
       ```
