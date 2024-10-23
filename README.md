@@ -54,12 +54,12 @@
    echo 'export PATH="/usr/local/opt/python@3.9/bin:$PATH"' >> ~/.zshrc
    source ~/.zshrc
    ```
-   - Verify: 
+   - Verify:
    ```
    python3.9 --version
    ```
 10. **Virtual Environment Setup**
-   - Create: 
+   - Create:
    ```
    python3.9 -m venv myproject_env
    ```
