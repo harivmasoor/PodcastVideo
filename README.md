@@ -25,6 +25,7 @@ This project transcribes audio files (specifically podcasts) into SSML-formatted
 3. Install the required packages:
    ```
    pip install -r requirements.txt
+   pip install google-generativeai
    ```
 
 4. Create a `.env` file in the project root and add your Gemini API key:
