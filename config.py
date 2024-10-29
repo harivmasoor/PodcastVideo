@@ -4,7 +4,7 @@ import google.generativeai as genai
 
 
 # Load .env file explicitly
-dotenv_path = os.path.join(os.path.dirname(__file__), '..', '.env')
+dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 # Get the API key, with a fallback to None
