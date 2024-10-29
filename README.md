@@ -84,3 +84,24 @@ Your transcript will be saved as "My_Podcast_Transcript.txt" in the PodcastVideo
 If you encounter any errors:
 Copy and paste the command and error message to the AI chat box, it will give you suggestions on how to fix it.
 
+## Risks and Privacy Info
+
+- **Privacy & Data Security**: AI tools may collect personal data (e.g., voice, avatar data).
+   - Mitigation: Review and disclose clearly using privacy policies and limit sharing of sensitive information.
+
+- **Ethical Concerns**: Risk of deepfakes and misuse of realistic avatars/audio for misleading purposes.
+   - Mitigation: Use transparency when avatars resemble real people; disclose AI usage openly.
+
+- **Accuracy & Reliability**: AI outputs can be biased or inaccurate.
+   - Mitigation: Review all generated content for unintended bias or errors before sharing.
+
+- **Intellectual Property (IP)**: Generated content may have usage restrictions or licensing terms.
+   - Mitigation: Verify rights and licenses for generated audio and avatars, especially if used commercially.
+
+- **Security Risks**: Potential for misuse in phishing or impersonation attacks.
+   - Mitigation: Share content carefully, keep tools updated, and use security best practices.
+ 
+## Other info:
+
+1. Meta just released open source version of Google Notebook LM, try that as well - https://github.com/meta-llama/llama-recipes/tree/main/recipes/quickstart/NotebookLlama
+
