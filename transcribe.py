@@ -9,7 +9,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 def transcribe_audio(audio_file_path):
       # Create a more detailed prompt
     prompt = """
-    Generate a transcript of the podcast conversation about Sara Zare.
+    Generate a transcript of the podcast conversation about ####ADD_YOUR_NAME_HERE####.
     Identify the speakers as 'Man' and 'Woman', and format the transcript in SSML as follows:
     
     <speak>
